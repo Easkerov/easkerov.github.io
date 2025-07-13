@@ -13,22 +13,14 @@
         },
 
         init: function(){
-            // Вызывается при инициализации
             console.log('KinoBro plugin is active');
-        },
-
-        // Пример кнопки
-        onCreateButton: function(){
-            Lampa.Settings.main().update({
-                title: 'KinoBro',
-                subtitle: 'Нажми чтобы проверить',
-                callback: function(){
-                    alert('KinoBro работает!');
-                }
-            });
         }
     };
 
-    // Подключаем в Lampa
-    Lampa.Plugin.register('kinobro', kinobro);
+    // 🔥 Вот это важно! Зарегистрировать в Lampa
+    if (typeof Lampa !== 'undefined') {
+        Lampa.Plugin.register('kinobro', kinobro);
+    } else {
+        console.warn('Lampa not found. Плагин не зарегистрирован');
+    }
 })();
